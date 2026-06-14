@@ -1,0 +1,342 @@
+@import 'variables';
+
+// ===== RESET & BASE STYLES =====
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: $color-background;
+  color: $color-text-primary;
+  font-family: $font-family-default;
+  font-size: $font-size-body-md;
+  font-weight: $font-weight-400;
+  line-height: $line-height-body;
+}
+
+// ===== TYPOGRAPHY =====
+h1 {
+  font-family: $font-family-default;
+  font-size: $font-size-display-lg;
+  font-weight: $font-weight-800;
+  line-height: $line-height-display;
+  letter-spacing: $letter-spacing-display;
+}
+
+h2 {
+  font-family: $font-family-default;
+  font-size: $font-size-headline-lg;
+  font-weight: $font-weight-700;
+  line-height: $line-height-headline;
+}
+
+h3 {
+  font-family: $font-family-default;
+  font-size: $font-size-headline-md;
+  font-weight: $font-weight-600;
+  line-height: $line-height-headline;
+}
+
+h4 {
+  font-family: $font-family-default;
+  font-size: $font-size-body-lg;
+  font-weight: $font-weight-600;
+  line-height: $line-height-body;
+}
+
+h5 {
+  font-family: $font-family-default;
+  font-size: $font-size-body-md;
+  font-weight: $font-weight-600;
+  line-height: $line-height-body;
+}
+
+h6 {
+  font-family: $font-family-default;
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-600;
+  line-height: $line-height-label;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  color: $color-text-secondary;
+  margin-bottom: $spacing-md;
+}
+
+small,
+.label-sm {
+  font-family: $font-family-default;
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-600;
+  line-height: $line-height-label;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $color-text-tertiary;
+}
+
+// Data/Monospace Text
+.data-mono {
+  font-family: $font-family-mono;
+  font-size: $font-size-data-mono;
+  font-weight: $font-weight-500;
+  line-height: $line-height-mono;
+  letter-spacing: $letter-spacing-mono;
+}
+
+// ===== LINKS =====
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-fixed;
+  }
+
+  &:active {
+    color: $color-primary-fixed-dim;
+  }
+}
+
+// ===== SCROLLBAR =====
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-surface-container;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-primary-container;
+  border-radius: $radius-sm;
+
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+// Firefox
+* {
+  scrollbar-color: $color-primary-container $color-surface-container;
+  scrollbar-width: thin;
+}
+
+// ===== FORM ELEMENTS =====
+input,
+textarea,
+select {
+  font-family: $font-family-default;
+  font-size: $font-size-body-md;
+  font-weight: $font-weight-400;
+  color: $color-text-primary;
+  background-color: #080c20;
+  border: 1px solid $color-border-primary;
+  border-radius: $radius-base;
+  padding: $spacing-sm $spacing-md;
+  transition: all $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba(193, 196, 230, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $color-text-tertiary;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c1c4e6' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-md center;
+  padding-right: $spacing-lg;
+}
+
+// ===== BUTTONS =====
+button,
+.btn {
+  font-family: $font-family-default;
+  font-size: $font-size-body-md;
+  font-weight: $font-weight-600;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $radius-base;
+  cursor: pointer;
+  transition: all $transition-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Button Variants
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-on-primary;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-fixed;
+  }
+}
+
+.btn-secondary {
+  background-color: $color-secondary;
+  color: $color-on-secondary;
+
+  &:hover:not(:disabled) {
+    background-color: $color-secondary-fixed;
+  }
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: $color-text-primary;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  &:hover:not(:disabled) {
+    background-color: $color-hover-overlay;
+    border-color: $color-border-hover;
+  }
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: $radius-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) {
+    background-color: $color-hover-overlay;
+  }
+}
+
+// ===== UTILITY CLASSES =====
+.text-primary {
+  color: $color-text-primary;
+}
+
+.text-secondary {
+  color: $color-text-secondary;
+}
+
+.text-tertiary {
+  color: $color-text-tertiary;
+}
+
+.text-primary-accent {
+  color: $color-primary;
+}
+
+.text-error {
+  color: $color-error;
+}
+
+// Background Utilities
+.bg-surface {
+  background-color: $color-surface;
+}
+
+.bg-surface-container {
+  background-color: $color-surface-container;
+}
+
+.bg-primary-container {
+  background-color: $color-primary-container;
+}
+
+.bg-hover {
+  background-color: $color-hover-overlay;
+}
+
+// Border Utilities
+.border-primary {
+  border-color: $color-border-primary;
+}
+
+.border-accent {
+  border-left: 4px solid $color-primary;
+}
+
+// Display Utilities
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Text Utilities
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

@@ -1,0 +1,150 @@
+// ===== APEX TELEMETRY - DESIGN TOKENS =====
+
+// ===== COLORS =====
+// Surface Colors - Hierarchie von dunkel zu hell
+// Verwendet für verschiedene Ebenen/Layer in der App
+$color-surface: #121414;                      // Basis Surface (verwendet wenig)
+$color-surface-dim: #121414;                  // Sehr dunkel, fast wie Background
+$color-surface-bright: #37393a;               // Heller, kontrastreich
+$color-surface-container-lowest: #0c0f0f;    // DUNKELSTE - Tiefste Ebene (z.B. versteckte Elemente)
+$color-surface-container-low: #1a1c1c;       // Dunkel - Base Layer (z.B. Background der App)
+$color-surface-container: #1e2020;           // MITTEL - Haupt-Layer (z.B. Sidebar, Header, Cards) ✓ AM HÄUFIGSTEN
+$color-surface-container-high: #282a2b;      // Heller - Höhere Ebene (z.B. Hover States, aktive Elemente)
+$color-surface-container-highest: #333535;   // HELLSTE - Höchste Ebene (z.B. modals, dropdowns)
+
+// Text Colors
+$color-on-surface: #e2e2e2;
+$color-on-surface-variant: #c7c5ce;
+$color-inverse-surface: #e2e2e2;
+$color-inverse-on-surface: #2f3131;
+
+// Border & Outline
+$color-outline: #919098;
+$color-outline-variant: #46464d;
+$color-surface-tint: #c1c4e6;
+
+// Primary Colors
+$color-primary: #c1c4e6;
+$color-on-primary: #2b2f49;
+$color-primary-container: #0a0e27;
+$color-on-primary-container: #777a99;
+$color-inverse-primary: #595c79;
+
+// Secondary Colors
+$color-secondary: #c0c4e8;
+$color-on-secondary: #2a2f4a;
+$color-secondary-container: #454a67;
+$color-on-secondary-container: #b5badd;
+
+// Tertiary Colors
+$color-tertiary: #e7bea1;
+$color-on-tertiary: #442b16;
+$color-tertiary-container: #1e0b00;
+$color-on-tertiary-container: #98755b;
+
+// Error Colors
+$color-error: #ffb4ab;
+$color-on-error: #690005;
+$color-error-container: #93000a;
+$color-on-error-container: #ffdad6;
+
+// Fixed Colors
+$color-primary-fixed: #dee0ff;
+$color-primary-fixed-dim: #c1c4e6;
+$color-on-primary-fixed: #161a33;
+$color-on-primary-fixed-variant: #414561;
+
+$color-secondary-fixed: #dee1ff;
+$color-secondary-fixed-dim: #c0c4e8;
+$color-on-secondary-fixed: #151a34;
+$color-on-secondary-fixed-variant: #404562;
+
+$color-tertiary-fixed: #ffdcc3;
+$color-tertiary-fixed-dim: #e7bea1;
+$color-on-tertiary-fixed: #2c1604;
+$color-on-tertiary-fixed-variant: #5d412a;
+
+// Background
+$color-background: #121414;
+$color-on-background: #e2e2e2;
+$color-surface-variant: #333535;
+
+// ===== SEMANTIC COLORS =====
+// Diese hier sind die praktischen, die du im Code verwendest!
+$color-text-primary: #ffffff;                 // Haupttext (Headlines, wichtige Info)
+$color-text-secondary: #c7c5ce;               // Sekundär Text (Beschreibungen, Labels)
+$color-text-tertiary: #919098;                // Tertiär Text (Hints, sehr muted)
+
+$color-border-primary: rgba(255, 255, 255, 0.1);    // Haupt-Borders (Cards, Inputs)
+$color-border-secondary: rgba(255, 255, 255, 0.05); // Subtile Borders (Divider, Trennlinien)
+$color-border-hover: $color-primary;                 // Border bei Hover/Active States
+
+$color-hover-overlay: rgba(255, 255, 255, 0.05);    // Transparente Hover-Schicht über Elementen
+
+// ===== TYPOGRAPHY =====
+// Font Families
+$font-family-default: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;  // UI, Navigation, Headlines
+$font-family-mono: 'JetBrains Mono', 'Monaco', 'Courier New', monospace;                   // Telemetry, Zahlen, Code
+
+// Font Sizes - Von klein zu groß
+$font-size-label-sm: 12px;          // KLEINSTE - Labels, Badges, Upper Case Text
+$font-size-data-mono: 14px;         // Zahlen/Daten (Telemetry) - MONO Font!
+$font-size-body-md: 16px;           // STANDARD - Normaler Text in der App
+$font-size-body-lg: 18px;           // Etwas größer - Größere Body Texte
+$font-size-headline-md: 24px;       // MITTEL - Abschnitts-Titel
+$font-size-headline-lg: 32px;       // GROßER - Page Titles
+$font-size-display-lg: 48px;        // RIESIG - Hero Titel (selten verwendet)
+
+// Font Weights
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;
+$font-weight-800: 800;
+
+// Line Heights
+$line-height-display: 1.1;
+$line-height-headline: 1.2;
+$line-height-body: 1.5;
+$line-height-label: 1;
+$line-height-mono: 1.4;
+
+// Letter Spacing
+$letter-spacing-display: -0.02em;
+$letter-spacing-mono: 0.02em;
+$letter-spacing-label: 0;
+
+// ===== SPACING =====
+// Alles basiert auf 8px - Macht Layout konsistent!
+$spacing-base: 8px;     // Die Basis - alles ist Multiples davon
+$spacing-xs: 4px;       // 0.5x - Für sehr enge Abstände
+$spacing-sm: 8px;       // 1x - Klein (Gap zwischen Items, innere Padding)
+$spacing-md: 16px;      // 2x - STANDARD (Padding in Cards, Gutter)
+$spacing-lg: 24px;      // 3x - Groß (Abstand zwischen Sections)
+$spacing-xl: 32px;      // 4x - Sehr groß (Margin zwischen Hauptteilen)
+$spacing-gutter: 16px;  // Standart Grid Gutter
+$spacing-margin: 24px;  // Standard Margin zwischen Blöcken
+
+// ===== BORDER RADIUS =====
+// Von spitz bis rund
+$radius-base: 0.25rem;  // 4px - STANDARD für Buttons, Inputs (minimal rund)
+$radius-sm: 0.125rem;   // 2px - Sehr minimal
+$radius-md: 0.375rem;   // 6px - Etwas mehr Rounding
+$radius-lg: 0.5rem;     // 8px - Für Cards (schön rund)
+$radius-xl: 0.75rem;    // 12px - Extra rund
+$radius-full: 9999px;   // KOMPLETT RUND - Pills, Avatare
+
+// ===== LAYOUT DIMENSIONS =====
+// Feste Größen für die App-Struktur
+$sidebar-width: 240px;          // Die Sidebar ist immer 240px breit (auf Desktop)
+$header-height: auto;           // Header hat variable Höhe (passt sich an Content an)
+
+// ===== SHADOWS =====
+// Verwendet NUR für Modals - ansonsten Tonal Layering!
+$shadow-modal: 0 4px 12px rgba(0, 0, 0, 0.5);   // Modal Shadow (starker Schatten)
+
+// ===== TRANSITIONS / ANIMATIONS =====
+// Für smooth Übergänge
+$transition-fast: 150ms ease-in-out;    // Schnell (Icon Hover, kleine Effekte)
+$transition-base: 200ms ease-in-out;    // STANDARD (Farb-Changes, Border-Changes)
+$transition-slow: 300ms ease-in-out;    // Langsam (Page Transitions, große Effekte)
