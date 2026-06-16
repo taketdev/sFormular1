@@ -25,6 +25,26 @@
   text-decoration: none;
   border-radius: 6px;
   color: $color-on-surface;
+  position: relative;
+  transition: all $transition-base;
+
+  &:hover,
+  &.active {
+    background-color: $color-surface-container-high;
+    color: $color-text-primary;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -16px; // Align with sidebar padding
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background-color: #ffffff;
+      border-radius: 0 4px 4px 0;
+    }
+  }
 }
 
 .sidebar_icon {
