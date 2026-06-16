@@ -1,0 +1,344 @@
+@import '../../styles/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.dashboard-page {
+  padding-bottom: $spacing-xl;
+}
+
+// Calendar Link in Header
+.calendar-link {
+  color: $color-primary;
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-600;
+  letter-spacing: 0.05em;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+// Race Cards Styles
+.race-card {
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+
+  &:hover {
+    .arrow-btn {
+      color: $color-text-primary;
+      transform: translateX(4px);
+    }
+  }
+}
+
+.date-time-box {
+  width: 70px;
+  flex-shrink: 0;
+
+  .date {
+    font-size: 11px;
+    color: $color-text-tertiary;
+    letter-spacing: 0.05em;
+    margin-bottom: $spacing-xs;
+  }
+
+  .time {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 40px;
+  background-color: $color-border-primary;
+  margin: 0 $spacing-md;
+  flex-shrink: 0;
+}
+
+.track-thumb {
+  background-color: #121414;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: $radius-base;
+  width: 64px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs;
+  flex-shrink: 0;
+
+  .track-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+  }
+}
+
+.track-info {
+  .track-name {
+    font-size: $font-size-body-lg;
+    font-weight: 700;
+    margin-bottom: $spacing-xs;
+  }
+
+  .track-details {
+    font-size: $font-size-data-mono;
+  }
+}
+
+.session-info {
+  margin-right: $spacing-md;
+
+  .session-type {
+    font-size: $font-size-data-mono;
+    margin-top: $spacing-xs;
+  }
+}
+
+// Solid badges for cards
+.badge-live {
+  display: inline-block;
+  background-color: #f43f5e;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-full;
+  letter-spacing: 0.05em;
+}
+
+.badge-kommend {
+  display: inline-block;
+  background-color: $color-surface-bright;
+  color: $color-text-secondary;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px $spacing-sm;
+  border-radius: $radius-full;
+  letter-spacing: 0.05em;
+}
+
+.text-coral {
+  color: #f43f5e;
+}
+
+.arrow-btn {
+  font-family: $font-family-mono;
+  font-size: 18px;
+  color: $color-text-tertiary;
+  transition: all $transition-fast;
+  user-select: none;
+}
+
+// Widget Cards Accents
+.card-accent-coral {
+  border-left: 4px solid #f43f5e;
+  padding-left: calc($spacing-lg - 3px);
+}
+
+// Driver Widget Specifics
+.driver-widget {
+  min-height: 220px;
+
+  .watermark-bg {
+    position: absolute;
+    right: 12px;
+    bottom: -20px;
+    font-size: 140px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    font-family: $font-family-default;
+  }
+
+  .driver-code {
+    font-size: 40px;
+    font-weight: 900;
+    color: #3b82f6; // Red Bull Racing Blue Accent
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .driver-number {
+    font-size: 40px;
+    font-weight: 900;
+    color: #60a5fa;
+    margin-left: $spacing-xs;
+    line-height: 1;
+  }
+
+  .driver-fullname {
+    font-size: $font-size-body-lg;
+    font-weight: 700;
+    margin-top: $spacing-xs;
+  }
+
+  .points-value {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .team-value {
+    font-weight: 600;
+    font-size: $font-size-body-md;
+  }
+}
+
+// Constructors Widget Specifics
+.constructors-list {
+  justify-content: space-between;
+  height: 100%;
+}
+
+.constructor-row {
+  margin-bottom: $spacing-xs;
+
+  .team-name {
+    font-weight: 600;
+    font-size: $font-size-body-md;
+  }
+
+  .team-points {
+    font-weight: 600;
+    font-size: $font-size-body-md;
+  }
+}
+
+.team-stripe {
+  width: 3px;
+  height: 14px;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+
+  &.redbull-stripe { background-color: #2563eb; }
+  &.ferrari-stripe { background-color: #dc2626; }
+  &.mclaren-stripe { background-color: #ea580c; }
+}
+
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background-color: $color-surface-container-lowest;
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: $radius-full;
+
+  &.redbull-bar { background-color: #2563eb; }
+  &.ferrari-bar { background-color: #dc2626; }
+  &.mclaren-bar { background-color: #ea580c; }
+}
+
+// Status Widget Specifics
+.status-items {
+  .status-row {
+    padding: $spacing-xs 0;
+  }
+
+  .status-label {
+    font-size: $font-size-body-md;
+  }
+
+  .status-value {
+    font-size: $font-size-body-md;
+
+    .weather-icon {
+      color: $color-text-secondary;
+    }
+  }
+
+  .text-dry {
+    color: #10b981; // DRY Green
+    letter-spacing: 0.05em;
+  }
+
+  .green-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+    background-color: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+}
+
+.widget-divider {
+  width: 100%;
+  height: 1px;
+  background-color: $color-border-primary;
+  margin: $spacing-sm 0;
+}
+
+.timer-section {
+  .timer-icon {
+    color: #f43f5e;
+  }
+
+  .timer-value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: $spacing-xs;
+  }
+}
+
+// Bottom Calendar Button
+.calendar-btn {
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: color $transition-fast;
+
+  svg {
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $color-text-primary;
+
+    svg {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Responsive layout tweaks
+@media (max-width: 768px) {
+  .race-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-md;
+
+    .flex-row {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .session-info {
+      text-align: left;
+      margin-right: 0;
+    }
+  }
+
+  .date-time-box {
+    text-align: left;
+    width: auto;
+  }
+
+  .divider-vertical {
+    display: none;
+  }
+}
