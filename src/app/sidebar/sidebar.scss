@@ -1,0 +1,9 @@
+@import '../../styles.scss';
+
+.sidebar {
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  min-height: 100vh;
+  flex-shrink: 0;
+  background-color: $color-surface-container-lowest;
+}
