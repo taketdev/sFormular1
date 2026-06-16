@@ -6,4 +6,134 @@
   width: 100%;
   flex: 0 0 auto;
   border-bottom: 1px solid $color-border-primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.search_box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border-primary;
+  border-radius: $radius-base;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 400px;
+  transition: all $transition-base;
+
+  &:focus-within {
+    border-color: $color-primary;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  input {
+    background: none;
+    border: none;
+    color: $color-text-primary;
+    font-size: $font-size-body-md;
+    width: 100%;
+    outline: none;
+
+    &::placeholder {
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+.search_icon {
+  width: 18px;
+  height: 18px;
+  color: $color-text-tertiary;
+  flex-shrink: 0;
+}
+
+.header_right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header_actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: $radius-base;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-hover-overlay;
+    
+    img {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    transition: opacity $transition-base;
+  }
+}
+
+.header_divider {
+  width: 1px;
+  height: 24px;
+  background-color: $color-outline-variant;
+  opacity: 0.5;
+}
+
+.header_user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.user_name {
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-600;
+  color: $color-text-primary;
+}
+
+.user_tier {
+  font-size: 10px;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.user_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  border: 1px solid $color-border-primary;
+  background-color: transparent;
+  padding: 8px;
 }
