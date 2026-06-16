@@ -1,9 +1,35 @@
 @import '../../styles.scss';
 
+
 .sidebar {
   width: $sidebar-width;
   min-width: $sidebar-width;
   min-height: 100vh;
   flex-shrink: 0;
   background-color: $color-surface-container-lowest;
+  border-right: 1px solid $color-outline-variant;
+  padding: 24px 16px;
 }
+
+.sidebar_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar_nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  color: $color-on-surface;
+}
+
+.sidebar_icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
