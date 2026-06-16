@@ -9,6 +9,12 @@
   background-color: $color-surface-container-lowest;
   border-right: 1px solid $color-outline-variant;
   padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar_content {
+  flex: 1;
 }
 
 .sidebar_nav {
@@ -27,6 +33,7 @@
   color: $color-on-surface;
   position: relative;
   transition: all $transition-base;
+  cursor: pointer;
 
   &:hover,
   &.active {
@@ -53,3 +60,48 @@
   flex-shrink: 0;
 }
 
+.sidebar_footer {
+  margin-top: auto;
+}
+
+.sidebar_divider {
+  height: 1px;
+  background-color: $color-outline-variant;
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.user_panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+}
+
+.user_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  border: 1px solid $color-border-primary;
+  background-color: transparent;
+  padding: 8px;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user_name {
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-600;
+  color: $color-text-primary;
+}
+
+.user_tier {
+  font-size: 10px;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

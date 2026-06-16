@@ -1,31 +1,42 @@
 <div class="sidebar">
-    
-    <div class="sidebar_headline">
-    <h1>
-        SF <br>
-        Insight
-    </h1>
+    <div class="sidebar_content">
+        <div class="sidebar_headline">
+            <h1>
+                SF <br>
+                Insight
+            </h1>
+            <p>Technical Data Hub</p>
+        </div>
 
-    <p>Technical Data Hub</p>
+        <nav class="sidebar_nav">
+            <a routerLink="/home" routerLinkActive="active">
+                <img class="sidebar_icon" src="/assets/icons/home.svg" alt="Home icon">
+                <span>Home</span>
+            </a>
+            <a routerLink="/tasks" routerLinkActive="active">
+                <img class="sidebar_icon" src="/assets/icons/live.svg" alt="Live icon">
+                <span>Live</span>
+            </a>
+            <a routerLink="/settings" routerLinkActive="active">
+                <img class="sidebar_icon" src="/assets/icons/calendar.svg" alt="Calendar icon">
+                <span>Calendar</span>
+            </a>
+            <a routerLink="/favorites" routerLinkActive="active">
+                <img class="sidebar_icon" src="/assets/icons/favorites.svg" alt="Favorites icon">
+                <span>Favorites</span>
+            </a>
+        </nav>
     </div>
 
-    <nav class="sidebar_nav">
-        <a routerLink="/home" routerLinkActive="active">
-            <img class="sidebar_icon" src="/assets/icons/home.svg" alt="Home icon">
-            <span>Home</span>
-        </a>
-        <a routerLink="/tasks" routerLinkActive="active">
-            <img class="sidebar_icon" src="/assets/icons/live.svg" alt="Live icon">
-            <span>Live</span>
-        </a>
-        <a routerLink="/settings" routerLinkActive="active">
-            <img class="sidebar_icon" src="/assets/icons/calendar.svg" alt="Calendar icon">
-            <span>Calendar</span>
-        </a>
-        <a routerLink="/favorites" routerLinkActive="active">
-            <img class="sidebar_icon" src="/assets/icons/favorites.svg" alt="Favorites icon">
-            <span>Favorites</span>
-        </a>
-    </nav>
+    <div class="sidebar_footer">
+        <div class="sidebar_divider"></div>
+        <div class="user_panel">
+            <img class="user_avatar" src="/assets/icons/character.svg" alt="User icon">
+            <div class="user_info">
+                <span class="user_name">Admin analyst</span>
+                <span class="user_tier">PRO Tier</span>
+            </div>
+        </div>
+    </div>
 
 </div>
