@@ -1,1 +1,159 @@
-<p>champstanding works!</p>
+<div class="standings-page flex flex-row gap-lg animate-slide-in-up">
+  <!-- Left Side: Table of Standings -->
+  <div class="standings-main flex flex-col flex-1 gap-md">
+    <!-- Section Header (Tabs) matching the height and size of dashboard section headers -->
+    <div class="section-header flex flex-row flex-between">
+      <div class="flex flex-row gap-lg">
+        <a routerLink="/champstanding" [queryParams]="{tab: 'fahrer'}" [class.active]="activeTab() === 'fahrer'" class="tab-title">Fahrer</a>
+        <a routerLink="/champstanding" [queryParams]="{tab: 'teams'}" [class.active]="activeTab() === 'teams'" class="tab-title">Teams</a>
+      </div>
+    </div>
+
+    <div class="data-table">
+      <div class="table-header">
+        <div class="header-cell col-pos">POS</div>
+        <div class="header-cell col-fahrer">FAHRER</div>
+        <div class="header-cell col-nr">NR</div>
+        <div class="header-cell col-team">TEAM</div>
+        <div class="header-cell col-punkte">PUNKTE</div>
+      </div>
+
+      <div class="table-body">
+        @if (activeTab() === 'fahrer') {
+          @for (driver of driversList(); track driver.pos) {
+            <div class="table-row flex flex-row items-center">
+              <!-- Left Team Accent Stripe -->
+              <div class="row-team-accent {{ driver.colorClass }}"></div>
+              
+              <div class="cell col-pos mono">{{ driver.pos }}</div>
+              <div class="cell col-fahrer flex flex-row items-center gap-sm">
+                <span class="driver-name font-bold">{{ driver.name }}</span>
+                <span class="country-badge">{{ driver.country }}</span>
+              </div>
+              <div class="cell col-nr text-secondary mono">{{ driver.number }}</div>
+              <div class="cell col-team text-secondary">{{ driver.team }}</div>
+              <div class="cell col-punkte mono font-bold text-primary">{{ driver.points }}</div>
+            </div>
+          }
+        } @else {
+          @for (team of teamsList(); track team.pos) {
+            <div class="table-row flex flex-row items-center">
+              <!-- Left Team Accent Stripe -->
+              <div class="row-team-accent {{ team.colorClass }}"></div>
+              
+              <div class="cell col-pos mono">{{ team.pos }}</div>
+              <div class="cell col-fahrer flex flex-row items-center gap-sm">
+                <span class="driver-name font-bold">{{ team.team }}</span>
+              </div>
+              <div class="cell col-nr text-secondary mono">-</div>
+              <div class="cell col-team text-secondary">{{ team.team }}</div>
+              <div class="cell col-punkte mono font-bold text-primary">{{ team.points }}</div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Side: Sidebar Widgets -->
+  <div class="standings-sidebar flex flex-col gap-md">
+    <!-- Widget 1: Battle for P1 -->
+    <div class="card battle-widget flex flex-col gap-md">
+      <div class="widget-header">
+        <span class="label-sm text-secondary">BATTLE FOR P1</span>
+      </div>
+      
+      <div class="battle-content flex flex-row flex-between items-center">
+        <div class="flex flex-col">
+          <span class="diff-value font-bold text-primary">52</span>
+          <span class="label-sm text-tertiary">PUNKTE DIFFERENZ</span>
+        </div>
+        <div class="flex flex-col text-right">
+          <div class="trend-value text-error flex flex-row items-center gap-xs font-semibold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="7" y1="7" x2="17" y2="17"/>
+              <polyline points="17 7 17 17 7 17"/>
+            </svg>
+            <span>-8 Pkt</span>
+          </div>
+          <span class="label-sm text-tertiary">seit letztem GP</span>
+        </div>
+      </div>
+      
+      <div class="battle-progress-container flex flex-col gap-xs">
+        <div class="battle-bar flex flex-row">
+          <div class="bar-fill bar-verstappen" style="width: 55%"></div>
+          <div class="bar-fill bar-norris" style="width: 45%"></div>
+        </div>
+        <div class="flex flex-row flex-between label-sm text-tertiary font-semibold">
+          <span>VERSTAPPEN</span>
+          <span>NORRIS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget 2: Nächstes Rennen (Singapore) -->
+    <div class="card next-race-card flex flex-col gap-md relative overflow-hidden">
+      <!-- Dark Overlay -->
+      <div class="card-bg-overlay"></div>
+
+      <div class="widget-header relative z-10">
+        <span class="label-sm text-secondary">NÄCHSTES RENNEN</span>
+      </div>
+      
+      <div class="race-title-container relative z-10 flex flex-col">
+        <span class="race-title text-primary font-bold">Singapore Grand Prix</span>
+      </div>
+      
+      <div class="race-details relative z-10 flex flex-col gap-sm mt-auto">
+        <div class="flex flex-row flex-between items-center text-secondary">
+          <span class="label-sm text-tertiary">Datum</span>
+          <span class="font-semibold text-primary">22. Sept 2024</span>
+        </div>
+        <div class="flex flex-row flex-between items-center text-secondary">
+          <span class="label-sm text-tertiary">Status</span>
+          <div class="status-indicator flex flex-row items-center gap-xs font-semibold text-primary">
+            <div class="status-dot-blue"></div>
+            <span>In Vorbereitung</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget 3: Technischer Fokus -->
+    <div class="card tech-focus-widget flex flex-col gap-md">
+      <div class="widget-header">
+        <span class="label-sm text-secondary">TECHNISCHER FOKUS</span>
+      </div>
+      
+      <div class="tech-items flex flex-col gap-md">
+        <!-- Item 1 -->
+        <div class="tech-row flex flex-row gap-md items-start">
+          <div class="tech-icon flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2v20M2 12h20M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span class="tech-title text-primary font-bold">Abnutzungsprofil</span>
+            <span class="tech-desc text-secondary">Reifenverschleiß in Singapur wird als 'Sehr Hoch' eingestuft (Level 5/5).</span>
+          </div>
+        </div>
+        
+        <!-- Item 2 -->
+        <div class="tech-row flex flex-row gap-md items-start">
+          <div class="tech-icon flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-xs">
+            <span class="tech-title text-primary font-bold">Temperatur-Matrix</span>
+            <span class="tech-desc text-secondary">Erwartete Asphalttemperaturen von 34°C bei Rennstart.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

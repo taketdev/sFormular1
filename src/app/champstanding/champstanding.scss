@@ -1,0 +1,327 @@
+@import '../../styles/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.standings-page {
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-lg;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+}
+
+// ===== LOCAL LAYOUT & FLEXBOX UTILITIES =====
+.flex { display: flex; }
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.flex-1 { flex: 1; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { align-items: center; justify-content: space-between; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.flex-shrink-0 { flex-shrink: 0; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.mt-auto { margin-top: auto; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.text-error { color: $color-error; }
+.text-secondary { color: $color-text-secondary; }
+.text-tertiary { color: $color-text-tertiary; }
+.text-primary { color: $color-text-primary; }
+.mono { font-family: $font-family-mono; }
+
+.gap-xs { gap: $spacing-xs; }
+.gap-sm { gap: $spacing-sm; }
+.gap-md { gap: $spacing-md; }
+.gap-lg { gap: $spacing-lg; }
+
+.section-header {
+  display: flex;
+  gap: $spacing-md;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border-primary;
+}
+
+.grid-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+
+  &.grid-3 {
+    & > * {
+      flex: 1 1 calc(33.333% - $spacing-lg * 2 / 3);
+      min-width: 250px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-flex {
+    &.grid-3 > * {
+      flex: 1 1 calc(50% - $spacing-lg / 2);
+      min-width: 250px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-flex {
+    &.grid-3 > * {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+  }
+}
+
+.standings-main {
+  flex: 1;
+  min-width: 0;
+}
+
+// Tab titles matching the height/size of dashboard section title
+.tab-title {
+  font-family: $font-family-default;
+  font-size: $font-size-headline-md; // 24px
+  font-weight: $font-weight-600;
+  color: $color-text-secondary;
+  text-decoration: none;
+  position: relative;
+  transition: color $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+
+  &.active {
+    color: $color-text-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -$spacing-lg - 1px; // -25px (overlay the parent border-bottom)
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #ffffff; // White active underline
+    }
+  }
+}
+
+.standings-sidebar {
+  width: 310px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+// Table styling overrides for Standings
+.data-table {
+  border-radius: $radius-lg;
+  background-color: $color-surface-container;
+  overflow: hidden;
+}
+
+.table-row {
+  position: relative;
+  padding-left: $spacing-lg !important; // Leave room for left vertical team accent
+  min-height: 52px;
+}
+
+.row-team-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+
+  &.redbull-border { background-color: #2563eb; }
+  &.mclaren-border { background-color: #ea580c; }
+  &.ferrari-border { background-color: #dc2626; }
+  &.mercedes-border { background-color: #0d9488; } // Teal
+  &.aston-border { background-color: #064e3b; } // Dark Green
+  &.rb-border { background-color: #1d4ed8; } // Blue
+}
+
+// Custom column alignments
+.col-pos {
+  width: 50px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.col-fahrer {
+  flex: 1.8;
+  display: flex;
+  align-items: center;
+}
+
+.col-nr {
+  width: 60px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.col-team {
+  flex: 1.5;
+}
+
+.col-punkte {
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: $spacing-sm;
+}
+
+// Country badge styling
+.country-badge {
+  display: inline-block;
+  background-color: $color-surface-bright;
+  color: $color-text-secondary;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: $radius-base;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+// Widget 1: Battle for P1
+.battle-widget {
+  .diff-value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .trend-value {
+    font-size: 14px;
+    color: #f43f5e; // Down trend red/coral
+    display: inline-flex;
+    align-items: center;
+    
+    svg {
+      transform: rotate(0deg);
+    }
+  }
+
+  .battle-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: $radius-full;
+    overflow: hidden;
+    display: flex;
+    background-color: $color-surface-container-lowest;
+
+    .bar-fill {
+      height: 100%;
+      transition: width $transition-base;
+    }
+
+    .bar-verstappen {
+      background-color: #2563eb;
+    }
+
+    .bar-norris {
+      background-color: #ea580c;
+    }
+  }
+}
+
+// Widget 2: Singapore Grand Prix
+.next-race-card {
+  min-height: 180px;
+  background: linear-gradient(135deg, #1e2020 0%, #0c0f0f 100%);
+  border: 1px solid $color-border-primary;
+  
+  .card-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+
+
+  .race-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: $spacing-xs;
+  }
+
+  .status-dot-blue {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+    background-color: $color-on-surface-variant;
+    box-shadow: 0 0 6px rgba(199, 197, 206, 0.5);
+  }
+}
+
+// Widget 3: Technical Focus
+.tech-focus-widget {
+  .tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #121414;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: $radius-base;
+    color: $color-primary;
+  }
+
+  .tech-title {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .tech-desc {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+}
+
+// Responsive overrides for Championship page
+@media (max-width: 768px) {
+  .standings-page {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  .standings-sidebar {
+    width: 100%;
+  }
+
+  // Adjust table columns on mobile for readability
+  .col-nr, .header-cell.col-nr {
+    display: none;
+  }
+
+  .col-team, .header-cell.col-team {
+    display: none;
+  }
+
+  .col-pos {
+    width: 40px;
+  }
+
+  .col-punkte {
+    width: 60px;
+  }
+}

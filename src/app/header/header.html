@@ -1,9 +1,9 @@
 <header class="header">
     <div class="header_left">
         @if (isStandingsPage()) {
-            <div class="header_tabs">
-                <a routerLink="/champstanding" [queryParams]="{tab: 'fahrer'}" [class.active]="!isTeamsTab()">Fahrer</a>
-                <a routerLink="/champstanding" [queryParams]="{tab: 'teams'}" [class.active]="isTeamsTab()">Teams</a>
+            <div class="header-title-group flex flex-row items-center">
+                <span class="header-title">Weltmeisterschaftsstand</span>
+                <span class="header-subtitle"> Saison 2024 &bull; 24 Runden</span>
             </div>
         } @else {
             <div class="search_box">
@@ -17,6 +17,16 @@
     </div>
 
     <div class="header_right">
+        @if (isStandingsPage()) {
+            <div class="search_box search_box_right">
+                <svg class="search_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Search for data, drivers or tracks...">
+            </div>
+        }
+
         <div class="header_actions">
             <button class="icon_btn">
                 <img src="/assets/icons/bell.svg" alt="Notifications">

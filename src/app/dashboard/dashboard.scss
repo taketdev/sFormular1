@@ -15,6 +15,87 @@
   height: 100%;
 }
 
+// ===== LOCAL LAYOUT & FLEXBOX UTILITIES =====
+.flex { display: flex; }
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.flex-1 { flex: 1; }
+.flex-center { align-items: center; justify-content: center; }
+.flex-between { align-items: center; justify-content: space-between; }
+.flex-start { align-items: flex-start; justify-content: flex-start; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.mt-auto { margin-top: auto; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.text-primary { color: $color-text-primary; }
+.text-secondary { color: $color-text-secondary; }
+.text-tertiary { color: $color-text-tertiary; }
+.text-success { color: #10b981; }
+.py-sm { padding-top: $spacing-sm; padding-bottom: $spacing-sm; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+
+.gap-xs { gap: $spacing-xs; }
+.gap-sm { gap: $spacing-sm; }
+.gap-md { gap: $spacing-md; }
+.gap-lg { gap: $spacing-lg; }
+
+.section-header {
+  display: flex;
+  gap: $spacing-md;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border-primary;
+}
+
+.section-title {
+  font-family: $font-family-default;
+  font-size: $font-size-headline-md;
+  font-weight: $font-weight-600;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.section-subtitle {
+  font-family: $font-family-default;
+  font-size: $font-size-body-md;
+  font-weight: $font-weight-400;
+  color: $color-text-secondary;
+  margin: 0;
+}
+
+.grid-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+
+  &.grid-3 {
+    & > * {
+      flex: 1 1 calc(33.333% - $spacing-lg * 2 / 3);
+      min-width: 250px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-flex {
+    &.grid-3 > * {
+      flex: 1 1 calc(50% - $spacing-lg / 2);
+      min-width: 250px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-flex {
+    &.grid-3 > * {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+  }
+}
+
 // Override global card padding for dashboard cards to save height
 .card {
   padding: $spacing-md !important; // 16px instead of 24px
