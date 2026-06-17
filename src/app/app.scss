@@ -33,3 +33,26 @@ app-header {
   flex: 1;
   min-height: 0;
 }
+
+@media (max-width: 768px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  app-sidebar {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  app-header {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .main_area {
+    flex: 1;
+    width: 100%;
+  }
+}

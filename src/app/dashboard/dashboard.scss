@@ -5,10 +5,23 @@
   flex-direction: column;
   flex: 1;
   width: 100%;
+  height: 100%;
 }
 
 .dashboard-page {
-  padding-bottom: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md; // Reduced gap from lg (24px) to md (16px)
+  height: 100%;
+}
+
+// Override global card padding for dashboard cards to save height
+.card {
+  padding: $spacing-md !important; // 16px instead of 24px
+  
+  &.race-card {
+    padding: $spacing-sm $spacing-md !important; // 8px top/bottom, 16px left/right
+  }
 }
 
 // Calendar Link in Header
@@ -27,29 +40,30 @@
 // Race Cards Styles
 .race-card {
   align-items: center;
-  padding: $spacing-md $spacing-lg;
 
   &:hover {
     .arrow-btn {
-      color: $color-text-primary;
       transform: translateX(4px);
+      img {
+        opacity: 1;
+      }
     }
   }
 }
 
 .date-time-box {
-  width: 70px;
+  width: 65px;
   flex-shrink: 0;
 
   .date {
-    font-size: 11px;
+    font-size: 10px;
     color: $color-text-tertiary;
     letter-spacing: 0.05em;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 2px;
   }
 
   .time {
-    font-size: 24px;
+    font-size: 20px; // Reduced from 24px
     font-weight: 700;
     line-height: 1.1;
   }
@@ -57,7 +71,7 @@
 
 .divider-vertical {
   width: 1px;
-  height: 40px;
+  height: 30px; // Reduced from 40px
   background-color: $color-border-primary;
   margin: 0 $spacing-md;
   flex-shrink: 0;
@@ -67,12 +81,12 @@
   background-color: #121414;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: $radius-base;
-  width: 64px;
-  height: 48px;
+  width: 52px; // Reduced from 64px
+  height: 38px; // Reduced from 48px
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $spacing-xs;
+  padding: 2px;
   flex-shrink: 0;
 
   .track-svg {
@@ -84,13 +98,13 @@
 
 .track-info {
   .track-name {
-    font-size: $font-size-body-lg;
+    font-size: $font-size-body-md; // Reduced from body-lg
     font-weight: 700;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 2px;
   }
 
   .track-details {
-    font-size: $font-size-data-mono;
+    font-size: 12px; // Reduced from mono
   }
 }
 
@@ -98,8 +112,8 @@
   margin-right: $spacing-md;
 
   .session-type {
-    font-size: $font-size-data-mono;
-    margin-top: $spacing-xs;
+    font-size: 13px; // Reduced from data-mono
+    margin-top: 2px;
   }
 }
 
@@ -108,9 +122,9 @@
   display: inline-block;
   background-color: #f43f5e;
   color: #ffffff;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 2px $spacing-sm;
+  padding: 1px $spacing-sm;
   border-radius: $radius-full;
   letter-spacing: 0.05em;
 }
@@ -119,9 +133,9 @@
   display: inline-block;
   background-color: $color-surface-bright;
   color: $color-text-secondary;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 2px $spacing-sm;
+  padding: 1px $spacing-sm;
   border-radius: $radius-full;
   letter-spacing: 0.05em;
 }
@@ -131,28 +145,44 @@
 }
 
 .arrow-btn {
-  font-family: $font-family-mono;
-  font-size: 18px;
-  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all $transition-fast;
   user-select: none;
+
+  img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+    transition: opacity $transition-fast;
+  }
 }
 
 // Widget Cards Accents
 .card-accent-coral {
   border-left: 4px solid #f43f5e;
-  padding-left: calc($spacing-lg - 3px);
+  padding-left: calc($spacing-md - 3px) !important; // Match smaller card padding
+}
+
+.card-accent,
+.card-secondary,
+.card-tertiary {
+  padding-left: calc($spacing-md - 3px) !important; // Match smaller card padding
 }
 
 // Driver Widget Specifics
 .driver-widget {
-  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+  min-height: 170px; // Reduced from 220px
+  height: 100%;
 
   .watermark-bg {
     position: absolute;
-    right: 12px;
-    bottom: -20px;
-    font-size: 140px;
+    right: 8px;
+    bottom: -15px;
+    font-size: 100px; // Reduced from 140px
     font-weight: 900;
     color: rgba(255, 255, 255, 0.02);
     user-select: none;
@@ -162,62 +192,68 @@
   }
 
   .driver-code {
-    font-size: 40px;
+    font-size: 32px; // Reduced from 40px
     font-weight: 900;
-    color: #3b82f6; // Red Bull Racing Blue Accent
+    color: #3b82f6;
     letter-spacing: -0.02em;
     line-height: 1;
   }
 
   .driver-number {
-    font-size: 40px;
+    font-size: 32px; // Reduced from 40px
     font-weight: 900;
     color: #60a5fa;
-    margin-left: $spacing-xs;
+    margin-left: 2px;
     line-height: 1;
   }
 
   .driver-fullname {
-    font-size: $font-size-body-lg;
+    font-size: $font-size-body-md;
     font-weight: 700;
-    margin-top: $spacing-xs;
+    margin-top: 2px;
   }
 
   .points-value {
-    font-size: 36px;
+    font-size: 30px; // Reduced from 36px
     font-weight: 700;
     line-height: 1;
   }
 
   .team-value {
     font-weight: 600;
-    font-size: $font-size-body-md;
+    font-size: 14px;
   }
 }
 
 // Constructors Widget Specifics
+.constructors-widget {
+  height: 100%;
+  min-height: 170px;
+}
+
 .constructors-list {
   justify-content: space-between;
   height: 100%;
+  gap: $spacing-sm; // Add tight gap
 }
 
 .constructor-row {
-  margin-bottom: $spacing-xs;
+  margin-bottom: 2px;
 
   .team-name {
     font-weight: 600;
-    font-size: $font-size-body-md;
+    font-size: 14px;
   }
 
   .team-points {
     font-weight: 600;
-    font-size: $font-size-body-md;
+    font-size: 14px;
   }
 }
 
 .team-stripe {
   width: 3px;
-  height: 14px;
+  height: 12px;
   border-radius: $radius-full;
   flex-shrink: 0;
 
@@ -244,17 +280,24 @@
 }
 
 // Status Widget Specifics
+.status-widget {
+  height: 100%;
+  min-height: 170px;
+}
+
 .status-items {
+  gap: 6px !important; // Tighten gaps
+
   .status-row {
-    padding: $spacing-xs 0;
+    padding: 2px 0;
   }
 
   .status-label {
-    font-size: $font-size-body-md;
+    font-size: 14px;
   }
 
   .status-value {
-    font-size: $font-size-body-md;
+    font-size: 14px;
 
     .weather-icon {
       color: $color-text-secondary;
@@ -267,11 +310,11 @@
   }
 
   .green-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: $radius-full;
     background-color: #10b981;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
   }
 }
 
@@ -279,7 +322,7 @@
   width: 100%;
   height: 1px;
   background-color: $color-border-primary;
-  margin: $spacing-sm 0;
+  margin: 6px 0; // Reduced from spacing-sm
 }
 
 .timer-section {
@@ -288,10 +331,10 @@
   }
 
   .timer-value {
-    font-size: 32px;
+    font-size: 26px; // Reduced from 32px
     font-weight: 700;
     line-height: 1;
-    margin-top: $spacing-xs;
+    margin-top: 2px;
   }
 }
 
@@ -319,26 +362,57 @@
 @media (max-width: 768px) {
   .race-card {
     flex-direction: column;
-    align-items: flex-start;
-    gap: $spacing-md;
+    align-items: stretch;
+    gap: $spacing-sm;
+    padding: $spacing-md !important;
 
-    .flex-row {
+    .card-left-section {
       width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $spacing-sm;
+      justify-content: flex-start;
+    }
+
+    .card-right-section {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       justify-content: space-between;
+      padding-top: $spacing-sm;
+      border-top: 1px solid $color-border-secondary;
+      margin-top: $spacing-xs;
+    }
+
+    .divider-vertical {
+      display: none;
+    }
+
+    .date-time-box {
+      width: 60px;
+      text-align: left;
     }
 
     .session-info {
       text-align: left;
       margin-right: 0;
     }
-  }
 
-  .date-time-box {
-    text-align: left;
-    width: auto;
-  }
+    .track-thumb {
+      width: 44px;
+      height: 32px;
+    }
 
-  .divider-vertical {
-    display: none;
+    .track-info {
+      flex: 1;
+      .track-name {
+        font-size: 14px;
+      }
+      .track-details {
+        font-size: 11px;
+      }
+    }
   }
 }
